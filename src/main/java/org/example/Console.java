@@ -8,10 +8,8 @@ public class Console {
     Scanner leia = new Scanner(System.in);
     Stack<String> pilhaDeLivros = new Stack<>();
 
-    //boolean opcaoEscolhida = true;
-
     public int menuOpcoes(){
-        IO.println("----------------------------------------------\n");
+        IO.println("\n----------------------------------------------");
         System.out.println("1. Colocar livro ");
         System.out.println("2. Retirar livro");
         System.out.println("3. Ver título do livro do topo da pilha ");
@@ -66,11 +64,19 @@ public class Console {
     }
 
     public void retirarLivro() {
-        System.out.println("\"" + pilhaDeLivros.peek() + "\" saiu da pilha.");
-        pilhaDeLivros.pop();
+        if (verificarVazia()) {
+            System.out.println(">> A pilha está vazia.");
+        } else {
+            System.out.println("\"" + pilhaDeLivros.peek() + "\" saiu da pilha.");
+            pilhaDeLivros.pop();
+        }
     }
     public void verificarTopo(){
-        System.out.println("O livro" + pilhaDeLivros.peek() + "está no TOPO da pilha.");
+        if (verificarVazia()) {
+            System.out.println(">> A pilha está vazia.");
+        } else {
+            System.out.println("O livro " + pilhaDeLivros.peek() + " está no TOPO da pilha.");
+        }
     }
 
     public boolean verificarVazia(){
@@ -81,16 +87,20 @@ public class Console {
         if (verificarVazia()) {
             System.out.println(">> A pilha está vazia.");
         } else {
+            System.out.println("-> A pilha possui "+  pilhaDeLivros.size() +" livro(s)." );
             return pilhaDeLivros.size();
         }
         return 0;
     }
 
     public void mostrarObjetos(){
-        System.out.println("--- Livros Empilhados (do topo para a base) ---");
-        for (String livro : pilhaDeLivros) {
-            System.out.println("- " + livro);
+        if (verificarVazia()) {
+            System.out.println(">> A pilha está vazia.");
+        } else {
+            System.out.println("--- Livros Empilhados ---");
+            for (String livro : pilhaDeLivros.reversed()) {//O reversed informa o primeiro que foi colocado até o ultimo. Reverso.
+                System.out.println("- " + livro);
+            }System.out.print("---------------FIM DA LISTA-------------------\n");
         }
-        System.out.println("----------------------------------------------");
     }
 }

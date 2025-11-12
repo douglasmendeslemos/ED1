@@ -19,6 +19,8 @@ public class Console {
         return leia.nextInt();
     }
 
+    //tornando o metodo menuOpcoes() em um metodo mais versatio.
+
     public int principal(){
         int opcao;
         do{
@@ -32,7 +34,7 @@ public class Console {
                     System.out.println("Saindo do programa. Até mais!");
                     break;
                 case 1:
-                    colocarLivro(leia);
+                    colocarLivro();
                     break;
                 case 2:
                     retirarLivro();
@@ -55,7 +57,7 @@ public class Console {
         return 0;
     }
 
-    public void colocarLivro(Scanner leia) {
+    public void colocarLivro() {
         leia.nextLine(); // limpa o buffer
         System.out.print("Digite o nome do livro: ");
         String nomeLivro = leia.nextLine();
@@ -71,6 +73,7 @@ public class Console {
             pilhaDeLivros.pop();
         }
     }
+
     public void verificarTopo(){
         if (verificarVazia()) {
             System.out.println(">> A pilha está vazia.");

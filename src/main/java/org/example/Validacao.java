@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.ArrayDeque;
+
 public class Validacao {
     /*Requisitos:
     Processar os comandos na ordem em que aparecem
@@ -11,10 +13,24 @@ public class Validacao {
 
 
     public String processarString(String texto) {
-        String resultado = new String();
+        ArrayDeque<Character> comando = new ArrayDeque();
 
+        for (char c : texto.toCharArray()) {
+            if (c == '#') {
+                if (!comando.isEmpty()) {
+                    comando.pop(); // remove o último caractere inserido
+                }
+            } else if (Character.isLetterOrDigit(c)) {
+                comando.push(c); // insere o caractere
+            }
+        }
 
-        return resultado;
+        StringBuilder resultado = new StringBuilder();
+        while (!comando.isEmpty()) {
+            resultado.append(comando.removeLast()); // remove do fim para manter a ordem original
+        }
+        System.out.println(resultado);
+        return resultado.toString();
     }
 
 }

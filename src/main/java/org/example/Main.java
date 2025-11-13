@@ -5,7 +5,9 @@ import java.util.Scanner;
 public class Main {
     static void main() {
         Console console = new Console();
-        console.principal();
+        Validacao validacao = new Validacao();
+        //console.principal();
+        validacao.processarString("abc##a##");
     }
 }
 

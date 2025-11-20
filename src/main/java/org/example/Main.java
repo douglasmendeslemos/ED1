@@ -7,7 +7,8 @@ public class Main {
         Console console = new Console();
         Validacao validacao = new Validacao();
         //console.principal();
-        validacao.processarString("abc##a##");
+        validacao.processarString("abc##aaaaaa##");
+        validacao.ApagarHashtag("    c   ");
     }
 }
 

@@ -14,23 +14,33 @@ public class Validacao {
 
     public String processarString(String texto) {
         ArrayDeque<Character> comando = new ArrayDeque();
-
+        StringBuilder resultado = new StringBuilder();
         for (char c : texto.toCharArray()) {
             if (c == '#') {
-                if (!comando.isEmpty()) {
+                if (!comando.isEmpty())
                     comando.pop(); // remove o último caractere inserido
-                }
-            } else if (Character.isLetterOrDigit(c)) {
+            } else if (Character.isLetterOrDigit(c))
                 comando.push(c); // insere o caractere
-            }
+            //System.out.println(c); para verificar se tem algo do texto zerando tudo e saindo branco
         }
-
-        StringBuilder resultado = new StringBuilder();
-        while (!comando.isEmpty()) {
+        while (!comando.isEmpty())
             resultado.append(comando.removeLast()); // remove do fim para manter a ordem original
-        }
         System.out.println(resultado);
         return resultado.toString();
+    }
+
+
+    public void ApagarHashtag(String texto) {
+        //String entrada = "abc#d#12#x";
+        StringBuilder sb = new StringBuilder();
+        for (char c : texto.toCharArray()) {
+            if (c == '#') {// Se houver # deve apagar o último caracterer inserido
+                if (!sb.isEmpty())
+                    sb.deleteCharAt(sb.length() - 1);
+            } else
+                sb.append(c); // adiciona caractere normal
+        }
+        System.out.println(sb.toString());
     }
 
 }
